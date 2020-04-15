@@ -3,7 +3,8 @@
     <v-btn
       text
       color="#fff"
-      @click="botDetected = true"
+      @click="verifyBot"
+      id="verify"
     >
       I am here to detect bots.
     </v-btn>
@@ -21,6 +22,12 @@ export default {
         this.$router.push({name: 'Lottery'})
       }
     }, 2000)
+  },
+  methods: {
+    verifyBot(e) {
+      if (e.clientX === 0 && e.clientY === 0)
+        this.botDetected = true
+    }
   }
 }
 </script>
