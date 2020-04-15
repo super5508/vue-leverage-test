@@ -2,13 +2,23 @@
   <v-row class="text-center">
     <v-col cols="6" offset="3">
       <div class="d-flex justify-center">
-        <div :class="{spinner: rotating}">
+        <div :class="{spinner: rotating, rotated: numberOfTries !== 1}">
           <v-img
             src="images/spinspr.png" 
             alt="lottery"
             width="330px"
             height="330px"
           />
+        </div>
+      </div>
+      <div class="d-flex justify-center">
+        <div>
+          <v-img
+            src="images/spin_prize2.png"
+            alt="spin"
+            width="49px"
+            height="60px"
+          ></v-img>
         </div>
       </div>
     </v-col>
@@ -93,12 +103,26 @@ export default {
   animation-timing-function: ease-out;
 }
 
+.spinner.rotated {
+  animation-name: spinsuccess;
+  transform: rotate(90deg);
+}
+
 @keyframes spin {
   from {
     transform: rotate(0deg);
   }
   to {
     transform: rotate(360deg);
+  }
+}
+
+@keyframes spinsuccess {
+  from {
+    transform: rotate(90deg);
+  }
+  to {
+    transform: rotate(450deg);
   }
 }
 </style>
